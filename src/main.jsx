@@ -37,7 +37,6 @@ import Crud_vehiculo from "./pages/crud_vehiculo";
 //Login
 import Login from "./components/login";
 //Password
-import RestablecerPassword from "./components/password/restablecerPassword";
 import Perfil from "./pages/perfil";
 //movil
 import Sesion from "./pages/sesion";
@@ -93,7 +92,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       {/* <!-- Login --> */}
       <Route path="/login" element={<Login_p />} />
       {/* <!-- Password --> */}
-      <Route path="/restablecer-password/:token" element={<RestablecerPassword />} />
       <Route path="/perfil" element={<Perfil />} />
       {/* <!-- Movil -->*/}
       <Route path="/sesion" element={<Sesion />} />
