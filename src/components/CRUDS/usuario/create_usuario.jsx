@@ -23,29 +23,63 @@ const C_usuario = () => {
         setUsuario(prevState => ({
             ...prevState,
             [name]: value,
-            ...(name === "id_tipo" && value === "2" || value === "3" ? { id_vehiculo: "1" } : {})
+            ...(name === "id_tipo" && (value === "2" || value === "3") ? { id_vehiculo: "1" } : {})
         }));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("https://api.navtracker.xdn.com.mx/api/usuario/", usuario);
-            alert("Usuario registrado correctamente");
-            setUsuario({
-                nombre: "",
-                ap_pat: "",
-                ap_mat: "",
-                email: "",
-                password: "",
-                n_tel: "",
-                id_tipo: "",
-                id_vehiculo: ""
-            });
-            navigate('/login'); 
+            const endpoints = [
+                { name: "Servidor 1 (3.88.222.39)", url: "https://3.88.222.39/api/usuario" },
+                { name: "Servidor 2 (api.navtracker.xdn.com.mx)", url: "https://api.navtracker.xdn.com.mx/api/usuario/" }
+            ];
+
+            const requests = endpoints.map(endpoint =>
+                axios.post(endpoint.url, usuario)
+                    .then(() => ({ name: endpoint.name, status: "success" }))
+                    .catch(() => ({ name: endpoint.name, status: "error" }))
+            );
+
+            const results = await Promise.all(requests);
+
+            const successful = results.filter(r => r.status === "success");
+            const failed = results.filter(r => r.status === "error");
+
+            if (successful.length > 0) {
+                let message = "✅ Usuario registrado correctamente en:\n";
+                successful.forEach(s => {
+                    message += `- ${s.name}\n`;
+                });
+
+                if (failed.length > 0) {
+                    message += "\n❌ Falló el registro en:\n";
+                    failed.forEach(f => {
+                        message += `- ${f.name}\n`;
+                    });
+                }
+
+                alert(message);
+
+                setUsuario({
+                    nombre: "",
+                    ap_pat: "",
+                    ap_mat: "",
+                    email: "",
+                    password: "",
+                    n_tel: "",
+                    id_tipo: "",
+                    id_vehiculo: ""
+                });
+
+                navigate('/login');
+            } else {
+                alert("❌ No se pudo registrar el usuario en ninguno de los servidores.");
+            }
+
         } catch (error) {
-            console.error("Error al registrar usuario", error);
-            alert("Error al registrar usuario");
+            console.error("Error inesperado al registrar usuario", error);
+            alert("Error inesperado al registrar usuario");
         }
     };
 
@@ -154,7 +188,7 @@ const C_usuario = () => {
                     />
                 </div>
 
-                <button type="submit" className="btn  w-100 mb-3" style={{color:"white",backgroundColor:"#1F6527"}}>
+                <button type="submit" className="btn w-100 mb-3" style={{ color: "white", backgroundColor: "#1F6527" }}>
                     Registrar Usuario
                 </button>
             </form>
