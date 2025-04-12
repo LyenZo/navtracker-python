@@ -11,7 +11,7 @@ const Edit_tipo = () => {
     });
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/api/u_tipo/${id_tipo}`)
+        axios.get(`https://3.88.222.39/api/u_tipo/${id_tipo}`)
             .then(response => setTusuario(response.data))
             .catch(error => console.error(error));
     }, [id_tipo]);

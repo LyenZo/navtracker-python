@@ -11,7 +11,7 @@ const Edit_vehiculo = () => {
     });
 
     useEffect(() => {
-        axios.get(`http://localhost:3001/api/vehiculo/${id_vehiculo}`)
+        axios.get(`https://3.88.222.39/api/vehiculo/${id_vehiculo}`)
             .then(response => setVehiculo(response.data))
             .catch(error => console.error(error));
     }, [id_vehiculo]);
