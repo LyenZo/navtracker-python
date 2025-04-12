@@ -46,7 +46,7 @@ const Excel_punto = () => {
           };
 
           // Enviar datos a la API
-          await axios.post('https://api.navtracker.xdn.com.mx/api/punto_ruta', puntoRuta);
+          await axios.post('https://3.88.222.39/api/punto_ruta', puntoRuta);
         }
         alert('Datos cargados correctamente');
       } catch (error) {

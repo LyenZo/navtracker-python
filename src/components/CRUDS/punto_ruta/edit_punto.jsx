@@ -14,7 +14,7 @@ const Edit_punto = () => {
     });
 
     useEffect(() => {
-        axios.get(`https://api.navtracker.xdn.com.mx/api/punto_ruta/${id_punto}`)
+        axios.get(`https://3.88.222.39/api/punto_ruta/${id_punto}`)
             .then(response => setPunto(response.data))
             .catch(error => console.error(error));
     }, [id_punto]);
@@ -25,7 +25,7 @@ const Edit_punto = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put(`https://api.navtracker.xdn.com.mx/api/punto_ruta/${id_punto}`, punto)
+        axios.put(`https://3.88.222.39/api/punto_ruta/${id_punto}`, punto)
             .then(() => {
                 alert("Punto de ruta actualizado");
                 navigate("/crud_punto");

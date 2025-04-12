@@ -45,7 +45,7 @@ const Excel_ruta = () => {
             distancia
           };
 
-          await axios.post('http://localhost:3001/api/ruta', ruta);
+          await axios.post('https://3.88.222.39/api/ruta', ruta);
         }
         alert('Datos cargados correctamente');
       } catch (error) {
