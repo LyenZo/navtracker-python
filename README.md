@@ -1,8 +1,6 @@
-# React + Vite
+# Bienvenido a NavTracker para Amplify
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+NavTracker es un sistema de rastreo de transporte publico que a partir de módulos GPS permite visualizar en 
+tiempo real la ubicación exacta de los vehiculos de nuestro interés, permitiendo así planificar nuestros 
+viajes de manera más precisa, a continuación se explica el funcionamiento de la página.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
