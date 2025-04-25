@@ -146,6 +146,7 @@ const C_usuario = () => {
                         <option value="">Tipo de usuario</option>
                         <option value="1">Conductor</option>
                         <option value="2">Pasajero</option>
+                        <option value="3">Administrador</option>
                     </select>
                 </div>
 
